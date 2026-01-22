@@ -23,7 +23,7 @@ public class Account {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "account_number", nullable = false, unique = true)
     private String accountNumber;
 
     @Column(nullable = false)
@@ -31,4 +31,8 @@ public class Account {
 
     @Column(nullable = false)
     private String currency;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AccountType type;
 }

@@ -31,6 +31,9 @@ public class Transaction {
     @Column(nullable = false)
     private TransactionType type;
 
+    @Column(name = "target_account_id")
+    private UUID targetAccountId;
+
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
