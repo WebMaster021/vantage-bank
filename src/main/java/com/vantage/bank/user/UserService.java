@@ -2,6 +2,7 @@ package com.vantage.bank.user;
 
 import com.vantage.bank.user.dto.RegisterRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public User registerUser(RegisterRequest request) {
 
@@ -19,8 +21,7 @@ public class UserService {
         User newUser = User.builder()
                 .fullName(request.getFullName())
                 .email(request.getEmail())
-                //TODO : encrypt password later in security
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .build();
 
         return userRepository.save(newUser);
