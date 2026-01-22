@@ -1,0 +1,8 @@
+CREATE TABLE accounts (
+id UUID PRIMARY KEY,
+user_id UUID NOT NULL,
+account_number VARCHAR(255) NOT NULL UNIQUE,
+balance BIGINT NOT NULL,
+currency VARCHAR(3) NOT NULL,
+CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id)
+)
