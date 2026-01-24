@@ -37,6 +37,10 @@ public class Transaction {
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TransactionStatus status;
+
     @PrePersist
     protected void onCreate() {
         this.timestamp = LocalDateTime.now();

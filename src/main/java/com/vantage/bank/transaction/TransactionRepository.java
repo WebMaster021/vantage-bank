@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
 
-    List<Transaction> findByAccountId(UUID accountId);
+    List<Transaction> findByAccountIdOrderByTimestampDesc(UUID accountId);
 }
